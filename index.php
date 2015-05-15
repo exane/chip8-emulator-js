@@ -19,7 +19,7 @@
     <?php
       $roms = scandir("./rom");
       foreach($roms as $rom) {
-        if($rom == "." || $rom == "..") continue;
+        if($rom == "." || $rom == ".." || $rom == ".gitkeep") continue;
         echo "<option value='$rom'>$rom</option>";
       }
     ?>
