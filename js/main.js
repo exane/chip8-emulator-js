@@ -8,5 +8,8 @@ var Chip8 = require("./Chip8");
     chip8 = Chip8();
     chip8.start(rom.options[rom.selectedIndex].value);
   }.bind(this));
+  document.querySelector("#stopGame").addEventListener("click", function(e) {
+    chip8.stop();
+  }.bind(this));
 
 })();

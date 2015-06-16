@@ -19,10 +19,11 @@ var Graphic = (function(){
    */
   r._ctx = null;
   r._canvas = null;
-  r._scale = 20;
+  r._scale = 10;
   r.color = {
     black: "black",
-    white: "white"
+    white: "white",
+    green: "#00ff00"
   }
 
   r.clear = function(){
@@ -31,7 +32,7 @@ var Graphic = (function(){
   }
 
   r.draw = function(x, y, width = 1, height = 1){
-    this._ctx.fillStyle = this.color.white;
+    this._ctx.fillStyle = this.color.green;
     this._ctx.fillRect(x * this._scale, y * this._scale, width * this._scale, height * this._scale);
   }
 

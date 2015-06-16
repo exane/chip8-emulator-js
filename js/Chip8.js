@@ -15,7 +15,6 @@ var Chip8 = (function(){
     this.reset();
     this.loadSound();
     this.initFont();
-    //this.listener();
   };
   var r = Chip8.prototype;
   /**
@@ -486,14 +485,6 @@ var Chip8 = (function(){
       this._currentCycle = 0;
       this._cycleClock = now;
     }
-  }
-
-  r.listener = function() {
-    document.querySelector("#loadGame").addEventListener("click", function(e) {
-      var rom = document.querySelector("select");
-      this.reset();
-      this.start(rom.options[rom.selectedIndex].value);
-    }.bind(this));
   }
 
   r.reset = function() {
