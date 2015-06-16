@@ -56,26 +56,35 @@ var Keyboard = (function(){
     }
   }
 
-  r._keydown = function(data, e) {
+  r._keydown = function(data, e){
     if(e.which != data.key) return;
     this.keyMap[data.key].pressed = true;
-    this._nextKeyQueue.forEach(function(cb) {
+    this.pressKey(this.keyMap[data.key].val, true);
+    this._nextKeyQueue.forEach(function(cb){
       cb.call(null, this.keyMap[data.key].val);
     }.bind(this));
     this._nextKeyQueue = [];
   }
 
-  r._keyup = function(data, e) {
+  r._keyup = function(data, e){
     if(e.which != data.key) return;
     this.keyMap[data.key].pressed = false;
+    this.pressKey(this.keyMap[data.key].val, false);
   }
 
-  r.isPressed = function(key) {
+  r.isPressed = function(key){
     return this.keys[key].pressed;
   }
 
-  r.nextKey = function(cb) {
+  r.nextKey = function(cb){
     this._nextKeyQueue.push(cb);
+  }
+
+  r.pressKey = function(key, b){
+    var el = document.querySelector(".key-" + key);
+    el.classList.remove("key-pressed");
+    if(b)
+      el.classList.add("key-pressed");
   }
 
   return Keyboard;
